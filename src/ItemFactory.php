@@ -1,8 +1,8 @@
 <?php
 
-namespace MacroPackr;
+namespace Macro;
 
-use MacroPackr\Item;
+use Macro\Item;
 
 class ItemFactory
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace MacroPackr;
+namespace Macro;
 
 class Item
 {

@@ -53,6 +53,6 @@ $state = [
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$packer = new MacroPackr\Packer;
+$packer = new Macro\Packr;
 $results = $packer->process($items, $max, $state);
 print_r($results);

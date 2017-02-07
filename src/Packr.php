@@ -1,10 +1,10 @@
 <?php
 
-namespace MacroPackr;
+namespace Macro;
 
-use MacroPackr\ItemFactory;
+use Macro\ItemFactory;
 
-class Packer
+class Packr
 {
     protected $itemFactory;
 
