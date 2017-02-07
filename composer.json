@@ -1,0 +1,21 @@
+{
+    "name": "corycollier/macro-packr",
+    "description": "Code to suggest foods for macro watchers",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cory Collier",
+            "email": "corycollier@corycollier.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "phploc/phploc": "^3.0",
+        "squizlabs/php_codesniffer": "^2.8",
+        "theseer/phpdox": "^0.9.0",
+        "phpmd/phpmd": "^2.6"
+    }
+}
