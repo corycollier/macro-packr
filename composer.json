@@ -17,5 +17,10 @@
         "squizlabs/php_codesniffer": "^2.8",
         "theseer/phpdox": "^0.9.0",
         "phpmd/phpmd": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "MacroPackr\\": "src/"
+        }
     }
 }
