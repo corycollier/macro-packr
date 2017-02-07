@@ -4,10 +4,12 @@ namespace MacroPackr;
 
 class Item
 {
+    const ERR_BAD_TYPE     = 'The requested type [%s] does not exist on this Item';
     const KCAL_PER_FAT     = 9;
     const KCAL_PER_CARB    = 4;
     const KCAL_PER_PROTEIN = 4;
 
+    protected $name;
     protected $carbs;
     protected $fats;
     protected $proteins;
@@ -37,6 +39,7 @@ class Item
     public function getDefaults()
     {
         return [
+            'name'     => '',
             'fats'     => 0,
             'carbs'    => 0,
             'proteins' => 0,
@@ -46,6 +49,7 @@ class Item
     public function __toArray()
     {
         return [
+            'name'     => $this->name,
             'fats'     => $this->fats,
             'carbs'    => $this->carbs,
             'proteins' => $this->proteins,
@@ -54,6 +58,10 @@ class Item
 
     public function get($type)
     {
+        $keys = $this->getDefaults();
+        if (!array_key_exists($type, $keys)) {
+            throw new LogicException(sprintf(self::ERR_BAD_TYPE, $type));
+        }
         return $this->$type;
     }
 }

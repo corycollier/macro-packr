@@ -45,7 +45,7 @@ class Packer
         return $items;
     }
 
-    public function isOverNumbers($leftovers, $item)
+    public function isOverNumbers($leftovers, Item $item)
     {
         $leftovers = (array)$leftovers;
 

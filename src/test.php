@@ -2,37 +2,37 @@
 
 $items = [
     [
-        'names' => 'fat food',
+        'name' => 'fat food',
         'fats' => 20,
         'carbs' => 5,
         'proteins' => 4,
     ],
     [
-        'names' => 'protein food',
+        'name' => 'protein food',
         'fats' => 2,
         'carbs' => 5,
         'proteins' => 14,
     ],
     [
-        'names' => 'carb food',
+        'name' => 'carb food',
         'fats' => 5,
         'carbs' => 25,
         'proteins' => 8,
     ],
     [
-        'names' => 'random 1',
+        'name' => 'random 1',
         'fats' => 0,
         'carbs' => 25,
         'proteins' => 0,
     ],
     [
-        'names' => 'random 2',
+        'name' => 'random 2',
         'fats' => 55,
         'carbs' => 5,
         'proteins' => 6,
     ],
     [
-        'names' => 'random 3',
+        'name' => 'random 3',
         'fats' => 15,
         'carbs' => 55,
         'proteins' => 18,
