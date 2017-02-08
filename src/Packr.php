@@ -60,11 +60,17 @@ class Packr
 
     public function process($items, $max, $state)
     {
+        $factory = $this->getItemFactory();
         foreach ($items as $index => $item) {
-            $items[$index] = $this->itemFactory->factory($item);
+            $items[$index] = $factory->factory($item);
         }
         $leftovers = $this->getLeftovers($max, $state);
         $sorted = $this->sortItems($items);
         return $this->filterByLeftovers($leftovers, $sorted);
+    }
+
+    public function getItemFactory()
+    {
+        return $this->itemFactory;
     }
 }

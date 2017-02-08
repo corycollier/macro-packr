@@ -8,7 +8,10 @@ class ItemFactory
 {
     public function factory($data)
     {
-        $item = $this->getItem();
+        $item   = $this->getItem();
+        $mapper = $this->getInputMapper();
+        $data   = $mapper->map($data);
+
         $item->init($data);
         return $item;
     }
@@ -16,5 +19,10 @@ class ItemFactory
     public function getItem()
     {
         return new Item;
+    }
+
+    public function getInputMapper()
+    {
+        return new InputMapper;
     }
 }

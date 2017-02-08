@@ -2,7 +2,9 @@
 
 namespace Macro;
 
-class Item
+use \JsonSerializable;
+
+class Item implements JsonSerializable
 {
     const ERR_BAD_TYPE     = 'The requested type [%s] does not exist on this Item';
     const KCAL_PER_FAT     = 9;
@@ -46,6 +48,27 @@ class Item
         ];
     }
 
+    public function get($type)
+    {
+        $keys = $this->getDefaults();
+        if (!array_key_exists($type, $keys)) {
+            throw new LogicException(sprintf(self::ERR_BAD_TYPE, $type));
+        }
+        return $this->$type;
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->__toArray();
+    }
+
+    public function __sleep()
+    {
+        return [
+            'name', 'fats', 'carbs', 'proteins',
+        ];
+    }
+
     public function __toArray()
     {
         return [
@@ -54,14 +77,5 @@ class Item
             'carbs'    => $this->carbs,
             'proteins' => $this->proteins,
         ];
-    }
-
-    public function get($type)
-    {
-        $keys = $this->getDefaults();
-        if (!array_key_exists($type, $keys)) {
-            throw new LogicException(sprintf(self::ERR_BAD_TYPE, $type));
-        }
-        return $this->$type;
     }
 }
