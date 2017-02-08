@@ -22,6 +22,10 @@ class InputMapper
             $input = $this->jsonDecode($input);
         }
 
+        if (is_object($input)) {
+            var_dump($input); die;
+        }
+
         $input = array_change_key_case($input, CASE_LOWER);
 
         $map = [

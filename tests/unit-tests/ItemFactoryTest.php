@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\UnitTests;
 
 use Macro\ItemFactory;
 

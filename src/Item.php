@@ -22,7 +22,7 @@ class Item implements JsonSerializable
      */
     public function __construct($data = [])
     {
-        $this->init();
+        $this->init($data);
     }
 
     /**

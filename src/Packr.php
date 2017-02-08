@@ -27,7 +27,12 @@ class Packr
         return $results;
     }
 
-
+    /**
+     * Sorts a list of items, by a given sortBy method.
+     * @param array $items The list of items to sort.
+     * @param string $sortBy The sorting method.
+     * @return array The sorted items.
+     */
     public function sortItems($items, $sortBy = self::SORT_CALORIES)
     {
         $results = [];
@@ -41,6 +46,11 @@ class Packr
         return $results;
     }
 
+    /**
+     * Returns the function to use on an Item, for the provided sort method.
+     * @param string $sortBy The sort method.
+     * @return string The resulting function to use on the Item.
+     */
     public function getSortFunction($sortBy = self::SORT_CALORIES)
     {
         $functionMap = [
@@ -52,6 +62,14 @@ class Packr
         return $functionMap[$sortBy];
     }
 
+    /**
+     * Returns an index value, to use for sorting.
+     * @param Item $item The item to get an index value from.
+     * @param string $func The function to call on the Item.
+     * @param string $sortBy The sorting flag.
+     * @param array $results The current list of results.
+     * @return string The resulting index value.
+     */
     public function getSortIndex($item, $func, $sortBy = self::SORT_CALORIES, $results = [])
     {
         $index = call_user_func_array([$item, $func], [$sortBy]);
@@ -61,6 +79,12 @@ class Packr
         return (string)$index;
     }
 
+    /**
+     * Takes a set of items, and returns the ones that fit in the leftover macro values.
+     * @param array $leftovers An associative array of macro leftovers
+     * @param Item $item A list of items to filter through.
+     * @return array A list of remaining items.
+     */
     public function filterByLeftovers($leftovers, $items)
     {
         foreach ($items as $index => $item) {
@@ -71,6 +95,12 @@ class Packr
         return $items;
     }
 
+    /**
+     * Calculates if a given item is over the leftover macros for the user.
+     * @param array $leftovers An associative array of macro leftovers
+     * @param  Item $item  The item to question.
+     * @return boolean True if the item has any macro over the current leftovers, false if not.
+     */
     public function isOverNumbers($leftovers, Item $item)
     {
         $leftovers = (array)$leftovers;

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <phpdox xmlns="http://xml.phpdox.net/config">
-    <project name="consumer-web/salesforce-rest-api" source="${basedir}/src" workdir="${basedir}/build/phpdox">
+    <project name="corycollier/macro-packr" source="${basedir}/src" workdir="${basedir}/build/phpdox">
         <collector publiconly="false">
             <include mask="*.php" />
             <exclude mask="**Test**"/>
+            <exclude mask="**test.php"/>
         </collector>
 
         <generator output="build">
@@ -15,7 +16,7 @@
                     <history enabled="true" limit="15" cache="${phpDox.project.workdir}/gitlog.xml" />
                 </source>
                 <source type="phpunit">
-                    <coverage path="../../build/logs/coverage/xml" />
+                    <coverage path="build/logs/coverage/xml" />
                 </source>
                 <source type="phploc">
                     <coverage path="build/logs/phploc.xml" />
