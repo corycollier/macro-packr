@@ -55,4 +55,9 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $packer = new Macro\Packr;
 $results = $packer->process($items, $max, $state);
+
 print_r($results);
+echo PHP_EOL, PHP_EOL;
+print_r(json_encode($results));
+echo PHP_EOL, PHP_EOL;
+print_r(serialize($results));
