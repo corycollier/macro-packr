@@ -37,6 +37,12 @@ $items = [
         'carbs' => 55,
         'proteins' => 18,
     ],
+    [
+        'name' => 'random 4',
+        'fats' => 15,
+        'carbs' => 25,
+        'proteins' => 18,
+    ],
 ];
 
 $max = [
@@ -54,7 +60,8 @@ $state = [
 require __DIR__ . '/../vendor/autoload.php';
 
 $packer = new Macro\Packr;
-$results = $packer->process($items, $max, $state);
+// $results = $packer->process($items, $max, $state);
+$results = $packer->process($items, $max, $state, Macro\Packr::SORT_CARBS);
 
 print_r($results);
 echo PHP_EOL, PHP_EOL;

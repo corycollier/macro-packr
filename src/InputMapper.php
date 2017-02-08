@@ -13,7 +13,15 @@ class InputMapper
     public function map($input)
     {
         $result = [];
-        $input = $this->jsonDecode($input);
+
+        if ($this->isSerialized($input)) {
+            $input = $this->unSerialize($input);
+        }
+
+        if ($this->isJson($input)) {
+            $input = $this->jsonDecode($input);
+        }
+
         $input = array_change_key_case($input, CASE_LOWER);
 
         $map = [
@@ -49,16 +57,21 @@ class InputMapper
         return $result;
     }
 
+    /**
+     * Wrapper for the json_decode function
+     * @param string $input The json encoded data.
+     * @return mixed An object.
+     */
     public function jsonDecode($input)
     {
-        if (!$this->isJson($input)) {
-            return $input;
-        }
-
-        $input = json_decode($input, true);
-        return $input;
+        return json_decode($input, true);
     }
 
+    /**
+     * Checks to see if an input is actually json encoded data
+     * @param mixed $input Input data.
+     * @return boolean True if json encoded data, false if not.
+     */
     public function isJson($input)
     {
         if (!is_string($input)) {
@@ -67,5 +80,29 @@ class InputMapper
 
         json_decode($input);
         return (json_last_error() == JSON_ERROR_NONE);
+    }
+
+    /**
+     * Unserializes data.
+     * @param string $input The serialized data.
+     * @return mixed An object.
+     */
+    public function unSerialize($input)
+    {
+        return unserialize($input);
+    }
+
+    /**
+     * Checks to see if an input string is acutally a serialized object.
+     * @param mixed $input Input data.
+     * @return boolean True if serialized data, false if not.
+     */
+    public function isSerialized($input)
+    {
+        if (!is_string($input)) {
+            return false;
+        }
+
+        return unserialize($input);
     }
 }
